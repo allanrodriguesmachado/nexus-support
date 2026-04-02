@@ -9,5 +9,3 @@ Route::get('/dashboard', function () {
 
 Route::get('/login', fn () => '')->name('screen.login');
 Route::post('login', AuthController::class)->name('login');
-
-
