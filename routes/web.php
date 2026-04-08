@@ -8,4 +8,4 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', [AuthController::class, 'index'])->name('screen.login');
-Route::post('/auth', AuthController::class)->name('login');
+Route::post('/auth', [AuthController::class, 'auth'])->name('login');
