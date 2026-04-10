@@ -4,11 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Nexus Support') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet"/>
+    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700,800" rel="stylesheet"/>
+
+    <!-- Script de Tema Seguro no Head (Mantive apenas um para evitar duplicidade) -->
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
 
     <!-- Styles / Scripts -->
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -2086,29 +2095,28 @@
     @endif
 </head>
 
-<script>
-    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark')
-    }
-</script>
+<!-- Mantive o fundo e texto que você enviou, mas com a propriedade antialiased para melhor leitura -->
+<body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] dark:text-[#EDEDEC] antialiased">
 
-<body
-    class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] ">
+@if(request()->routeIs('login') || request()->routeIs('register'))
+    <!-- Se for a tela de login, renderiza só o conteúdo (sem menu) -->
+    {{ $slot }}
+@else
+    <!-- Se for o painel, renderiza o Menu, Sidebar e o Meio -->
 
+    <x-layouts.header/>  <!-- Fica aqui! -->
+    <x-layouts.sidebar/> <!-- Fica aqui! -->
 
-    {{$slot}}
+    <main class="sm:ml-64 pt-[72px] min-h-screen">
+        <div class="p-4 sm:p-6 lg:p-8 max-w-screen-2xl mx-auto">
+
+            <!-- A MÁGICA ACONTECE AQUI -->
+            <!-- Tudo que for diferente em cada página vai cair aqui -->
+            {{ $slot }}
+
+        </div>
+    </main>
+@endif
 
 </body>
 </html>
-
-
-<script>
-    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark')
-    }
-</script>

@@ -7,5 +7,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/', [AuthController::class, 'index'])->name('screen.login');
-Route::post('/auth', [AuthController::class, 'auth'])->name('login');
+Route::get('/', [AuthController::class, 'index'])->name('login');
+Route::post('/auth', [AuthController::class, 'auth'])->name('auth');
+
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/kanban', function () {
+        return view('kanban');
+    })->name('kanban');
+});
