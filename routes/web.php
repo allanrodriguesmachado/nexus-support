@@ -9,7 +9,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/', [AuthController::class, 'index'])->name('login');
 Route::post('/auth', [AuthController::class, 'auth'])->name('auth');
-
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/kanban', function () {

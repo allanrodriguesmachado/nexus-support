@@ -118,7 +118,6 @@
                         </label>
                     </div>
 
-                    <!-- Botão de Login Principal (Estilo Laravel Primary Button) -->
                     <div class="pt-4">
                         <button type="submit"
                                 class="w-full flex justify-center items-center gap-2 text-white bg-[#FF2D20] hover:bg-[#e0241b] focus:ring-4 focus:ring-[#FF2D20]/30 active:scale-[0.98] font-bold rounded-lg text-sm px-4 py-3.5 transition-all duration-200 outline-none shadow-md shadow-[#FF2D20]/20">
@@ -128,14 +127,12 @@
                     </div>
                 </form>
 
-                <!-- Call to Action: Registrar -->
                 <div class="mt-10 pt-6 border-t border-zinc-100 text-center">
                     <p class="text-zinc-500 font-medium text-sm">
                         Ainda não possui acesso ao suporte? <br/>
                         <a href="#" class="text-zinc-900 font-bold hover:text-[#FF2D20] transition-colors inline-block mt-1">Solicite sua conta aqui &rarr;</a>
                     </p>
                 </div>
-
             </div>
         </div>
     </div>
