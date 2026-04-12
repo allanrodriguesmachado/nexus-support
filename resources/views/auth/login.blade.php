@@ -16,8 +16,8 @@
             <div class="relative z-10 max-w-lg">
                 <!-- Badge superior -->
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 mb-6 shadow-sm">
-                    <span class="flex h-2 w-2 rounded-full bg-[#FF2D20] shadow-[0_0_8px_#FF2D20]"></span>
-                    <span class="text-xs font-semibold text-zinc-300 uppercase tracking-wider">Sistema Operacional</span>
+                    <svg class="w-4 h-4 text-[#FF2D20]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <span class="text-xs font-semibold text-zinc-300 uppercase tracking-wider">Nexus Support</span>
                 </div>
 
                 <h2 class="text-5xl font-black text-white mb-6 tracking-tight leading-tight">
@@ -130,7 +130,7 @@
                 <div class="mt-10 pt-6 border-t border-zinc-100 text-center">
                     <p class="text-zinc-500 font-medium text-sm">
                         Ainda não possui acesso ao suporte? <br/>
-                        <a href="#" class="text-zinc-900 font-bold hover:text-[#FF2D20] transition-colors inline-block mt-1">Solicite sua conta aqui &rarr;</a>
+                        <a href="{{route('register')}}" class="text-zinc-900 font-bold hover:text-[#FF2D20] transition-colors inline-block mt-1">Solicite sua conta aqui &rarr;</a>
                     </p>
                 </div>
             </div>
