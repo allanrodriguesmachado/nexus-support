@@ -32,10 +32,9 @@
     <x-layouts.header/>
     <x-layouts.sidebar/>
 
-    <main class="sm:ml-64 pt-[72px] min-h-screen">
+    <main class="sm:ml-64 pt-18 min-h-screen">
         <div class="p-4 sm:p-6 lg:p-8 max-w-screen-2xl mx-auto">
             {{ $slot }}
-
         </div>
     </main>
 @endif

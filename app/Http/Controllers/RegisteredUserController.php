@@ -17,8 +17,8 @@ class RegisteredUserController extends Controller
     public function store(RegisterdUserRequest $request)
     {
        $data =  $request->validated();
-
       $user = User::create($data);
+      $user->assignRole('client');
 
       Auth::login($user);
 

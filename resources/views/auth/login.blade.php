@@ -1,8 +1,6 @@
 <x-layouts.app>
-    <!-- Container Principal - Fundo escuro profundo inspirado no Laravel -->
     <div class="flex min-h-screen w-full bg-zinc-950 font-sans text-zinc-100 selection:bg-[#FF2D20] selection:text-white">
 
-        <!-- LADO ESQUERDO: Área Visual (Estética Laravel Dark) -->
         <div class="hidden lg:flex lg:w-1/2 relative overflow-hidden items-center justify-center p-12 border-r border-zinc-800/50">
 
             <!-- Efeito Glow Vermelho (Laravel Signature) -->

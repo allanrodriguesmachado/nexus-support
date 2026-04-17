@@ -60,7 +60,8 @@
             <div class="flex items-center pl-1 gap-1 sm:gap-2">
                 <button type="button"
                         class="flex items-center gap-2 p-1 pl-2 transition-colors rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800/50 outline-none">
-                    <span class="hidden md:block text-sm font-bold text-zinc-700 dark:text-zinc-200">{{Str::of(auth()->user()->name)->before(' ')}}</span>
+                    <span
+                        class="hidden md:block text-sm font-bold text-zinc-700 dark:text-zinc-200">{{Str::of(auth()->user()->name)->before(' ')}}</span>
                     <div
                         class="flex items-center justify-center w-8 h-8 rounded-md bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 text-xs font-bold shadow-sm">
                         JT

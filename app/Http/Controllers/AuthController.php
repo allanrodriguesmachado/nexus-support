@@ -15,6 +15,7 @@ class AuthController extends Controller
 
     public function auth(LoginRequest $request)
     {
+
         $auth = Auth::attempt($request->validated());
 
         if (!$auth) {
