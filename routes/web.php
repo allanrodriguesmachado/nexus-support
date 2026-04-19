@@ -21,4 +21,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/kanban', function () {
         return view('kanban');
     })->name('kanban');
+
+    Route::get('/ticket', function () {
+        return view('client.ticket');
+    })->name('client.ticket');
 });
