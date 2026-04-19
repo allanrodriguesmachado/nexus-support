@@ -1,5 +1,5 @@
 <aside id="default-sidebar"
-       class="fixed top-0 left-0 z-40 w-64 h-screen pt-[72px] transition-transform -translate-x-full sm:translate-x-0 border-r border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950"
+       class="fixed top-0 left-0 z-40 w-64 h-screen pt-18 transition-transform -translate-x-full sm:translate-x-0 border-r border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950"
        aria-label="Sidebar">
     <div class="h-full px-4 py-6 overflow-y-auto">
         <ul class="space-y-1.5 font-medium">
@@ -8,14 +8,13 @@
             <li>
                 <a href="{{route('dashboard')}}"
                    class="flex items-center px-3 py-2.5 text-sm font-semibold rounded-xl transition-all group {{ request()->routeIs('dashboard') ? 'bg-red-50 text-[#FF2D20] dark:bg-[#FF2D20]/10 dark:text-[#FF2D20]' : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-white' }}">
-                    <svg class="w-5 h-5 text-[#FF2D20]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                         height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M10 6.025A7.5 7.5 0 1 0 17.975 14H10V6.025Z"/>
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M13.5 3c-.169 0-.334.014-.5.025V11h7.975c.011-.166.025-.331.025-.5A7.5 7.5 0 0 0 13.5 3Z"/>
+                    <svg
+                        class="shrink-0 w-5 h-5 transition-transform duration-300 group-hover:scale-110 {{ request()->routeIs('dashboard') ? 'text-[#FF2D20]' : 'text-zinc-400 group-hover:text-zinc-900 dark:text-zinc-500 dark:group-hover:text-white' }}"
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"
+                              d="M3 10.8 12 3l9 7.8V20a1 1 0 0 1-1 1h-5v-6a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v6H4a1 1 0 0 1-1-1v-9.2Z"/>
                     </svg>
-                    <span class="ms-3 font-bold" {{route('dashboard')}}>Dashboard</span>
+                    <span class="ms-3 font-bold">Dashboard</span>
                 </a>
             </li>
 
