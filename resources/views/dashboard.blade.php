@@ -1,6 +1,3 @@
-<!-- Exemplo de como usar a view, isso vai dentro de <main> no app.blade.php automaticamente -->
+<x-app-layout>
 
-<x-layouts.app>
-    <!-- Header Fixo no Topo -->
-
-</x-layouts.app>
+</x-app-layout>

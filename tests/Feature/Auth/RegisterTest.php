@@ -31,8 +31,8 @@ test('user can register', function () {
 
     assertAuthenticatedAs($user);
 
-    expect($user)->not->toBeNull();
-    expect($user->hasRole('client'))->toBeTrue();
+    expect($user)->not->toBeNull()
+        ->and($user->hasRole('client'))->toBeTrue();
 
     $response->assertRedirect(route('dashboard', absolute: false));
 });

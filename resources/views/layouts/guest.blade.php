@@ -26,18 +26,23 @@
 
 <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] dark:text-[#EDEDEC] antialiased">
 
-@if(request()->routeIs('login') || request()->routeIs('register'))
-    {{ $slot }}
-@else
-    <x-layouts.header/>
-    <x-layouts.sidebar/>
+{{--@if(request()->routeIs('login') || request()->routeIs('register'))--}}
+{{--    {{ $slot }}--}}
+{{--@else--}}
+{{--    <x-layouts.header/>--}}
+{{--    <x-layouts.sidebar/>--}}
 
-    <main class="sm:ml-64 pt-18 min-h-screen">
-        <div class="p-4 sm:p-6 lg:p-8 max-w-screen-2xl mx-auto">
-            {{ $slot }}
+@isset($header)
+    <header class="bg-white dark:bg-gray-800 shadow">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            {{ $header }}
         </div>
-    </main>
-@endif
+    </header>
+@endisset
+
+{{ $slot }}
+
+{{--@endif--}}
 
 </body>
 </html>

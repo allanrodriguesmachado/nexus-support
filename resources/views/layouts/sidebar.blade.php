@@ -20,7 +20,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('kanban') }}"
+                    <a href=""
                        class="flex items-center px-3 py-2.5 text-sm font-semibold rounded-xl transition-all group {{ request()->routeIs('kanban') ? 'bg-red-50 text-[#FF2D20] dark:bg-[#FF2D20]/10 dark:text-[#FF2D20]' : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-white' }}">
 
                         <svg
@@ -56,12 +56,12 @@
 
                 <li class="pt-4 pb-2">
                     <div class="text-xs font-bold text-zinc-400 uppercase tracking-wider px-3 dark:text-zinc-500">
-                        Gerenciamento
+                        Gerenciamento tecnicos
                     </div>
                 </li>
 
                 <li>
-                    <a href="#"
+                    <a href=""
                        class="flex items-center px-3 py-2.5 text-sm text-zinc-600 rounded-lg hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-white transition-colors group">
                         <svg
                             class="shrink-0 w-5 h-5 text-zinc-400 group-hover:text-zinc-900 dark:text-zinc-500 dark:group-hover:text-white transition-colors"
@@ -70,7 +70,7 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
                                   d="M16 19h4a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-2m-2.236-4a3 3 0 1 0 0-4M3 18v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
                         </svg>
-                        <span class="flex-1 ms-3 whitespace-nowrap">Usuários</span>
+                        <span class="flex-1 ms-3 whitespace-nowrap">Cadastro</span>
                     </a>
                 </li>
             @endcan
