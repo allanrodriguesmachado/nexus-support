@@ -26,12 +26,12 @@
 
 <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] dark:text-[#EDEDEC] antialiased">
 
+@include('layouts.header')
 @include('layouts.sidebar')
 {{--@if(request()->routeIs('login') || request()->routeIs('register'))--}}
 {{--    {{ $slot }}--}}
 {{--@else--}}
 {{--    <x-layouts.header/>--}}
-{{--    <x-layouts.sidebar/>--}}
 
 @isset($header)
     <header class="bg-white dark:bg-gray-800 shadow">

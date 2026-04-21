@@ -1,22 +1,14 @@
-<x-layouts.app>
-    <!-- Container Principal - Fundo escuro profundo inspirado no Laravel -->
+<x-guest-layout>
     <div class="flex min-h-screen w-full bg-zinc-950 font-sans text-zinc-100 selection:bg-[#FF2D20] selection:text-white">
 
-        <!-- ========================================== -->
-        <!-- LADO ESQUERDO: Área Visual (Institucional) -->
-        <!-- ========================================== -->
         <div class="hidden lg:flex lg:w-1/2 relative overflow-hidden items-center justify-center p-12 border-r border-zinc-800/50">
 
-            <!-- Efeito Glow Vermelho (Laravel Signature) -->
             <div class="absolute top-1/4 -left-32 w-96 h-96 bg-[#FF2D20] rounded-full mix-blend-screen filter blur-[150px] opacity-20 pointer-events-none"></div>
             <div class="absolute bottom-1/4 -right-32 w-[500px] h-[500px] bg-[#FF2D20] rounded-full mix-blend-screen filter blur-[150px] opacity-10 pointer-events-none"></div>
 
-            <!-- Grid Background Sutil -->
             <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGgyNHYyNEgwem0xIDF2MjJoMjJWMXptMSAxaDIwdjIwSDJ6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDMpIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=')] opacity-50"></div>
 
-            <!-- Conteúdo Decorativo -->
             <div class="relative z-10 max-w-lg">
-                <!-- Badge superior -->
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 mb-6 shadow-sm">
                     <svg class="w-4 h-4 text-[#FF2D20]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     <span class="text-xs font-semibold text-zinc-300 uppercase tracking-wider">Nexus Support</span>
@@ -176,4 +168,4 @@
             </div>
         </div>
     </div>
-</x-layouts.app>
+</x-guest-layout>
