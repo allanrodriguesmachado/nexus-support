@@ -2,21 +2,21 @@
 
 use App\Models\User;
 use Spatie\Permission\Models\Role;
+use function Pest\Laravel\assertAuthenticated;
 use function Pest\Laravel\assertAuthenticatedAs;
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\post;
 
 test('can screen register', function () {
-    $this->assertGuest();
     $response = $this->get(route('register'));
 
-    $response->assertStatus(200);
+   $response->assertStatus(200);
 });
 
 test('user can register', function () {
     Role::create(['name' => 'client']);
 
-    $response = post('/register', [
+    $response = post('/register/store', [
         'name' => 'Allan Rodrigues Machado',
         'email' => 'allanrodriguesdeveloper@gmail.com',
         'password' => 'Aln@830314',

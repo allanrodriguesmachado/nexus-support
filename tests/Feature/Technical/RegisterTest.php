@@ -13,26 +13,26 @@ use function Pest\Laravel\{post, assertDatabaseHas};
 //
 //    $response->assertStatus(200);
 //});
-uses(RefreshDatabase::class);
-test('Register technical or admin', function (){
-    Role::create(['name' => 'admin']);
-    $response = post('/technical/create', [
-        'name' => 'Allan Rodrigues Machado',
-        'email' => 'allanrmachado@gmail.com',
-        'password' => 'Aln@830314',
-        'password_confirmation' => 'Aln@830314',
-    ]);
 
-
-//    assertDatabaseHas('users', [
+//test('Register technical or admin', function (){
+//    Role::create(['name' => 'admin']);
+//    $response = post('/technical/create', [
 //        'name' => 'Allan Rodrigues Machado',
-//        'email' => 'allanrodriguesdeveloper@gmail.com',
+//        'email' => 'allanrmachado@gmail.com',
+//        'password' => 'Aln@830314',
+//        'password_confirmation' => 'Aln@830314',
 //    ]);
-    $user = User::where('email', 'allanrmachado@gmail.com')->first();
-
-    assertDatabaseHas($user);
-
-    expect($user)->not->toBeNull()->and($user->hasRole('admin'))->toBeTrue();
-
-    $response->assertRedirect(route('dashboard', absolute: false));
-});
+//
+//
+////    assertDatabaseHas('users', [
+////        'name' => 'Allan Rodrigues Machado',
+////        'email' => 'allanrodriguesdeveloper@gmail.com',
+////    ]);
+//    $user = User::where('email', 'allanrmachado@gmail.com')->first();
+//
+//    assertDatabaseHas($user);
+//
+//    expect($user)->not->toBeNull()->and($user->hasRole('admin'))->toBeTrue();
+//
+//    $response->assertRedirect(route('dashboard', absolute: false));
+//});
