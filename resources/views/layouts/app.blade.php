@@ -28,22 +28,13 @@
 
 @include('layouts.header')
 @include('layouts.sidebar')
-{{--@if(request()->routeIs('login') || request()->routeIs('register'))--}}
-{{--    {{ $slot }}--}}
-{{--@else--}}
-{{--    <x-layouts.header/>--}}
 
-@isset($header)
-    <header class="bg-white dark:bg-gray-800 shadow">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            {{ $header }}
-        </div>
-    </header>
-@endisset
 
-{{ $slot }}
-
-{{--@endif--}}
+<main class="sm:ml-64 pt-18 min-h-screen">
+    <div class="p-4 sm:p-6 lg:p-8 max-w-screen-2xl mx-auto">
+        {{ $slot }}
+    </div>
+</main>
 
 </body>
 </html>

@@ -5,13 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTechnicalRequest;
 use App\Http\Requests\UpdateTechnicalRequest;
 use App\Models\Admin\Technical;
+use App\Models\User;
 
 class TechnicalController extends Controller
 {
-    public function index()
-    {
-        //
-    }
+
 
     public function create()
     {
@@ -20,7 +18,9 @@ class TechnicalController extends Controller
 
     public function store(StoreTechnicalRequest $request)
     {
-        //
+        User::create($request->validated());
+
+        return redirect()->route('dashboard');
     }
 
     public function show(Technical $technical)
