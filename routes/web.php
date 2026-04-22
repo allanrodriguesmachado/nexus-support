@@ -20,6 +20,11 @@ Route::middleware('guest')->group(function () {
 
 
 Route::middleware('auth')->group(function () {
+//    Route::controller(TechnicalController::class)->group(function () {
+//       Route::get('/technical/create', 'create')->name('technical.create');
+//       Route::post('/technical/store', 'store')->name('technical.store');
+//    });
+
     Route::get('/technical/create', [TechnicalController::class, 'create'])->name('technical.create');
     Route::post('/technical/store', [TechnicalController::class, 'store'])->name('technical.store');
 

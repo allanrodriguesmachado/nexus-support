@@ -6,6 +6,8 @@ use App\Http\Requests\StoreTechnicalRequest;
 use App\Http\Requests\UpdateTechnicalRequest;
 use App\Models\Admin\Technical;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
 
 class TechnicalController extends Controller
 {
@@ -18,7 +20,16 @@ class TechnicalController extends Controller
 
     public function store(StoreTechnicalRequest $request)
     {
-        User::create($request->validated());
+        dd($request->validated());
+
+        $role = $request->input('role');
+        $data =  $request->validated();
+        dd($data);
+        $user = User::create($data);
+
+        $user->assignRole('admin');
+
+        Auth::login($user);
 
         return redirect()->route('dashboard');
     }

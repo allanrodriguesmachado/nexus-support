@@ -58,7 +58,7 @@
                 </div>
 
                 <!-- Formulário -->
-                <form action="{{ route('register') }}" method="POST" class="space-y-4">
+                <form action="{{ route('register.store') }}" method="POST" class="space-y-4">
                     @csrf
 
                     <!-- Grupo: Nome Completo -->
