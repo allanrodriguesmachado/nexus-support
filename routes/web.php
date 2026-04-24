@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\TechnicalController;
@@ -11,9 +12,9 @@ Route::get('/dashboard', function () {
 
 
 Route::middleware('guest')->group(function () {
-    Route::get('/', [AuthController::class, 'index'])->name('login');
+    Route::get('/', [LoginController::class, 'index'])->name('login');
 
-    Route::post('/auth', [AuthController::class, 'auth'])->name('auth');
+    Route::post('/auth', LoginController::class)->name('auth');
     Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
     route::post('/register/store', [RegisteredUserController::class, 'store'])->name('register.store');
 });
