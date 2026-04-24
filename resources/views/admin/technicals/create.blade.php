@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
 
-        <form action="{{ route('technical.store') }}" method="POST">
+        <form action="{{ route('register.admin.store') }}" method="POST">
             @csrf
 
             <div class="space-y-10">
@@ -54,22 +54,22 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <div class="md:col-span-2">
                                     <label class="block text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase mb-2 ml-1">Nome Completo</label>
-                                    <input type="text" name="name" class="w-full rounded-xl border-zinc-200 bg-zinc-50 text-zinc-900 placeholder:text-zinc-400 focus:border-transparent focus:ring-2 focus:ring-[#FF2D20] dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-500 transition-all py-3 px-4" placeholder="Nome do colaborador">
+                                    <input type="text" name="name" id="name" class="w-full rounded-xl border-zinc-200 bg-zinc-50 text-zinc-900 placeholder:text-zinc-400 focus:border-transparent focus:ring-2 focus:ring-[#FF2D20] dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-500 transition-all py-3 px-4" placeholder="Nome do colaborador">
                                 </div>
 
                                 <div class="md:col-span-2">
                                     <label class="block text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase mb-2 ml-1">E-mail</label>
-                                    <input type="email" name="email" class="w-full rounded-xl border-zinc-200 bg-zinc-50 text-zinc-900 placeholder:text-zinc-400 focus:border-transparent focus:ring-2 focus:ring-[#FF2D20] dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-500 transition-all py-3 px-4" placeholder="email@empresa.com">
+                                    <input type="email" name="email" id="email" class="w-full rounded-xl border-zinc-200 bg-zinc-50 text-zinc-900 placeholder:text-zinc-400 focus:border-transparent focus:ring-2 focus:ring-[#FF2D20] dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-500 transition-all py-3 px-4" placeholder="email@empresa.com">
                                 </div>
 
                                 <div>
                                     <label class="block text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase mb-2 ml-1">Senha de Acesso</label>
-                                    <input type="password" name="password" class="w-full rounded-xl border-zinc-200 bg-zinc-50 text-zinc-900 placeholder:text-zinc-400 focus:border-transparent focus:ring-2 focus:ring-[#FF2D20] dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-500 transition-all py-3 px-4" placeholder="••••••••">
+                                    <input type="password" name="password" id="password" class="w-full rounded-xl border-zinc-200 bg-zinc-50 text-zinc-900 placeholder:text-zinc-400 focus:border-transparent focus:ring-2 focus:ring-[#FF2D20] dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-500 transition-all py-3 px-4" placeholder="••••••••">
                                 </div>
 
                                 <div>
                                     <label class="block text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase mb-2 ml-1">Confirmar Senha</label>
-                                    <input type="password" name="password_confirmation" class="w-full rounded-xl border-zinc-200 bg-zinc-50 text-zinc-900 placeholder:text-zinc-400 focus:border-transparent focus:ring-2 focus:ring-[#FF2D20] dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-500 transition-all py-3 px-4" placeholder="••••••••">
+                                    <input type="password" name="password_confirmation" id="password_confirmation" class="w-full rounded-xl border-zinc-200 bg-zinc-50 text-zinc-900 placeholder:text-zinc-400 focus:border-transparent focus:ring-2 focus:ring-[#FF2D20] dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-500 transition-all py-3 px-4" placeholder="••••••••">
                                 </div>
                             </div>
                         </div>

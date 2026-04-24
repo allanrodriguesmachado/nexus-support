@@ -20,14 +20,16 @@ class TechnicalController extends Controller
 
     public function store(StoreTechnicalRequest $request)
     {
-        dd($request->validated());
+        $data = $request->validated();
 
         $role = $request->input('role');
-        $data =  $request->validated();
-        dd($data);
-        $user = User::create($data);
 
-        $user->assignRole('admin');
+        if (is_null($role)) {
+            $role = 'client';
+        }
+
+        $user = User::create($data);
+        $user->assignRole($role);
 
         Auth::login($user);
 

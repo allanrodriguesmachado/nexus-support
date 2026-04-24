@@ -25,10 +25,9 @@ class StoreTechnicalRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' =>'required|string|max:255',
+            'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|lowercase|unique:users',
             'password' => ['required', 'string', 'min:8', 'confirmed', Password::default()],
-//            'role' => ['required', Rule::in(['admin', 'client', 'technical'])],
         ];
     }
 }

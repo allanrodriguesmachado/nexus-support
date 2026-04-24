@@ -18,15 +18,9 @@ Route::middleware('guest')->group(function () {
     route::post('/register/store', [RegisteredUserController::class, 'store'])->name('register.store');
 });
 
-
 Route::middleware('auth')->group(function () {
-//    Route::controller(TechnicalController::class)->group(function () {
-//       Route::get('/technical/create', 'create')->name('technical.create');
-//       Route::post('/technical/store', 'store')->name('technical.store');
-//    });
-
     Route::get('/technical/create', [TechnicalController::class, 'create'])->name('technical.create');
-    Route::post('/technical/store', [TechnicalController::class, 'store'])->name('technical.store');
+    Route::post('/technical/store', [RegisteredUserController::class, 'registerAdminOrTechnical'])->name('register.admin.store');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

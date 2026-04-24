@@ -10,10 +10,10 @@ use function Pest\Laravel\post;
 test('can screen register', function () {
     $response = $this->get(route('register'));
 
-   $response->assertStatus(200);
+    $response->assertStatus(200);
 });
 
-test('user can register', function () {
+test('user can register client', function () {
     Role::create(['name' => 'client']);
 
     $response = post('/register/store', [
@@ -36,4 +36,31 @@ test('user can register', function () {
         ->and($user->hasRole('client'))->toBeTrue();
 
     $response->assertRedirect(route('dashboard', absolute: false));
+});
+
+test('user can register as admin or technical', function () {
+    Role::create(['name' => 'admin']);
+   Role::create(['name' => 'technical']);
+
+    $superAdmin = User::factory()->create();
+    $superAdmin->assignRole('admin');
+
+    $response = $this->actingAs($superAdmin)->post(route('register.admin.store'), [
+        'name' => 'Novo Tecnico',
+        'email' => 'tecnico@gmail.com',
+        'password' => 'Aln@830314',
+        'password_confirmation' => 'Aln@830314',
+        'role' => 'technical',
+    ]);
+
+    $this->assertDatabaseHas('users', [
+        'email' => 'tecnico@gmail.com',
+    ]);
+
+    $createdUser = User::where('email', 'tecnico@gmail.com')->first();
+    expect($createdUser->hasRole('technical'))->not->toBeNull();
+
+    $this->assertAuthenticatedAs($superAdmin);
+
+    $response->assertRedirect(route('dashboard'));
 });
