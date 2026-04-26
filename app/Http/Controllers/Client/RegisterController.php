@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Http\Controllers\Client;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Client\StoreRegisterRequest;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
+
+class RegisterController extends Controller
+{
+    public function __invoke()
+    {
+        return view('client.register');
+    }
+
+    public function store(StoreRegisterRequest $request)
+    {
+        $data = $request->validated();
+
+        $user = User::create($data);
+
+        $user->assignRole('client');
+
+        Auth::login($user);
+
+        return redirect()->route('dashboard');
+    }
+}

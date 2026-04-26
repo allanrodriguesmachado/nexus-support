@@ -12,7 +12,7 @@ class RolesAndPermissionsSeeder extends Seeder
     public function run(): void
     {
         $managerAdmin = Permission::create(['name' => 'manager_admin', 'guard_name' => 'web']);
-        $seeMyCalls = Permission::create(['name' => 'see_my_calls', 'guard_name' => 'web']);
+        $seeMyCalls = Permission::create(['name' => 'manager_client', 'guard_name' => 'web']);
 
         $admin = Role::create(['name' => 'admin', 'guard_name' => 'web']);
         $client = Role::create(['name' => 'client', 'guard_name' => 'web']);

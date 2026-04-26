@@ -3,7 +3,6 @@
        aria-label="Sidebar">
     <div class="h-full px-4 py-6 overflow-y-auto">
         <ul class="space-y-1.5 font-medium">
-
             @can('manager_admin')
                 <li>
                     <a href="{{route('dashboard')}}"
@@ -75,7 +74,7 @@
                 </li>
             @endcan
 
-            @can('see_my_calls')
+            @can('manager_client')
                 <li>
                     <a href=""
                        class="flex items-center px-3 py-2.5 text-sm font-semibold rounded-xl transition-all group {{ request()->routeIs('client.ticket') ? 'bg-red-50 text-[#FF2D20] dark:bg-[#FF2D20]/10 dark:text-[#FF2D20]' : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-white' }}">

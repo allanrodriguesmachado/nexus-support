@@ -3,13 +3,13 @@
 use App\Models\User;
 use function Pest\Laravel\post;
 
-test('login screen can be rendered', function () {
+test('renders the login screen', function () {
     $response = $this->get(route('login'));
 
     $response->assertStatus(200);
 });
 
-test('users can authenticate using the login screen', function () {
+test('authenticates users with valid credentials', function () {
     $user = User::factory()->create();
 
     $response = post(route('auth'), [
@@ -21,7 +21,7 @@ test('users can authenticate using the login screen', function () {
     $response->assertRedirect(route('dashboard', absolute: false));
 });
 
-test('users can logout', function () {
+test('allows authenticated users to logout', function () {
     $user = User::factory()->create();
 
     $response = $this->actingAs($user)->post(route('logout'));
