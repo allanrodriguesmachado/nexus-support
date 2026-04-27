@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Client\CallingsController;
 use App\Http\Controllers\Client\RegisterController;
 use App\Http\Controllers\TechnicalController;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,9 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/technical/create', [TechnicalController::class, 'create'])->name('technical.create');
 //    Route::post('/technical/store', [RegisterController::class, 'registerAdminOrTechnical'])->name('register.admin.store');
+
+    Route::get('/callings', [CallingsController::class, 'create'])->name('callings.create');
+    Route::post('/callings/store', [CallingsController::class, 'store'])->name('callings.store');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

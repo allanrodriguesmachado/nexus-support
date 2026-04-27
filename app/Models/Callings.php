@@ -10,9 +10,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
-#[Fillable(['title', 'description', 'category', 'status'])]
-#[Hidden(['client_id', 'technical_id'])]
+#[Fillable(['client_id', 'title', 'description', 'category', 'status'])]
 class Callings extends Model
 {
     use HasFactory, softDeletes, Notifiable, HasRoles;
+
+    public function client(): void
+    {
+        $this->hasMany(User::class, 'client_id');
+    }
 }

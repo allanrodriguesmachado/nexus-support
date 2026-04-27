@@ -18,15 +18,14 @@ class CallingsFactory extends Factory
      */
     public function definition(): array
     {
-        dd(User::role('client')->pluck('id'));
+        $user = User::role('client')->first();
 
         return [
             'title' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
             'status' => $this->faker->randomElement(['pending', 'completed']),
             'category' => $this->faker->word(),
-            'client_id' => $this->faker->randomElement([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),
-            'technical_id' => $this->faker->randomElement([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),
+            'client_id' => $user->id
         ];
     }
 }

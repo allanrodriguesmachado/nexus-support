@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Client\StoreRegisterRequest;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
@@ -16,7 +17,7 @@ class RegisterController extends Controller
         return view('client.register');
     }
 
-    public function store(StoreRegisterRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(StoreRegisterRequest $request): RedirectResponse
     {
         $data = $request->validated();
 
