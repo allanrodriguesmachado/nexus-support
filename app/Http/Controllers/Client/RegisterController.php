@@ -16,7 +16,7 @@ class RegisterController extends Controller
         return view('client.register');
     }
 
-    public function store(StoreRegisterRequest $request)
+    public function store(StoreRegisterRequest $request): \Illuminate\Http\RedirectResponse
     {
         $data = $request->validated();
 

@@ -14,7 +14,7 @@ Route::middleware('guest')->group(function () {
     Route::get('/', [LoginController::class, 'index'])->name('login');
     Route::post('/auth', LoginController::class)->name('auth');
 
-    Route::get('/register', RegisterController::class)->name('register');
+    Route::get('/register', RegisterController::class)->name('register.create');
     route::post('/register/store', [RegisterController::class, 'store'])->name('register.store');
 });
 

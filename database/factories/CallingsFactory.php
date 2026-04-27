@@ -18,11 +18,7 @@ class CallingsFactory extends Factory
      */
     public function definition(): array
     {
-        $user_id = User::with('roles')->whereHas('roles', function ($query) {
-            $query->where('name', 'client');
-        })->pluck('id')->toArray();
-
-        dd($user_id);
+        dd(User::role('client')->pluck('id'));
 
         return [
             'title' => $this->faker->sentence(),

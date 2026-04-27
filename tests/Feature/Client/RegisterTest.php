@@ -7,7 +7,7 @@ use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\post;
 
 test('renders the register screen ', function () {
-    $response = $this->get(route('register'));
+    $response = $this->get(route('register.create'));
 
     $response->assertStatus(200);
 });
