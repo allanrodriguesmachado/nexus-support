@@ -11,6 +11,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 Route::middleware('guest')->group(function () {
     Route::get('/', [LoginController::class, 'index'])->name('login');
     Route::post('/auth', LoginController::class)->name('auth');
@@ -20,12 +22,13 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/technical/create', [TechnicalController::class, 'create'])->name('technical.create');
-//    Route::post('/technical/store', [RegisterController::class, 'registerAdminOrTechnical'])->name('register.admin.store');
+    Route::middleware(['role:technical'])->group(function () {
+        Route::get('/technical/create', [TechnicalController::class, 'create'])->name('technical.create');
+    });
 
-    Route::get('/callings', [CallingsController::class, 'create'])->name('callings.create');
-    Route::post('/callings/store', [CallingsController::class, 'store'])->name('callings.store');
-    Route::get('/callings/list', [CallingsController::class, 'show'])->name('callings.show');
-
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::middleware(['role:client'])->group(function () {
+        Route::get('/callings', [CallingsController::class, 'create'])->name('callings.create');
+        Route::post('/callings/store', [CallingsController::class, 'store'])->name('callings.store');
+        Route::get('/callings/list', [CallingsController::class, 'show'])->name('callings.show');
+    });
 });

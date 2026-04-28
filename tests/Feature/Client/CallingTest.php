@@ -25,6 +25,5 @@ test('client can create a calling', function () {
         'client_id' => $user->id,
         'title' => 'Internet',
     ]);
-
-    return to_route('callings.create');
+    $response->assertRedirect(route('callings.create'));
 });

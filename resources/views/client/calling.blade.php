@@ -1,143 +1,156 @@
 <x-app-layout>
-    <div class="max-w-6xl mx-auto mt-8 p-4 lg:p-8">
+    <div class="max-w-6xl mx-auto mt-10 p-4 lg:p-8 transition-colors duration-200">
 
-        <div class="mb-8">
-            <h1 class="text-3xl font-bold text-zinc-900 dark:text-zinc-50 tracking-tight">Suporte Técnico</h1>
-            <p class="text-zinc-500 dark:text-zinc-400 mt-2">Abra um chamado detalhado para que nossa equipe de TI possa ajudar rapidamente.</p>
+        <div class="flex items-center gap-4 mb-10">
+            <div class="h-12 w-1.5 bg-[#FF2D20] rounded-full"></div>
+            <div>
+                <h1 class="text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight">Abertura de Chamado</h1>
+                <p class="text-zinc-500 dark:text-zinc-400 font-medium">Siga os passos abaixo para reportar um incidente à equipe de TI.</p>
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
             <div class="lg:col-span-8">
-                <div class="bg-white dark:bg-zinc-800 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700/60 overflow-hidden relative transition-colors duration-200">
-                    <div class="h-1 w-full bg-[#FF2D20]"></div>
+                <form action="{{ route('callings.store') }}" method="POST" class="space-y-10">
+                    @csrf
 
-                    <div class="p-6 sm:p-8">
-                        <div class="flex items-center space-x-3 mb-6 border-b border-zinc-100 dark:border-zinc-700/50 pb-4">
-                            <div class="p-2 bg-red-50 dark:bg-red-500/10 rounded-lg">
-                                <svg class="w-6 h-6 text-[#FF2D20]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                                </svg>
-                            </div>
-                            <h2 class="text-xl font-semibold text-zinc-800 dark:text-zinc-100">Novo Chamado</h2>
+                    <div>
+                        <label class="block text-sm font-bold text-zinc-400 uppercase tracking-widest mb-6">01. Selecione a Categoria</label>
+                        <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                            <label class="relative group cursor-pointer">
+                                <input type="radio" name="category" value="hardware" class="peer sr-only" required>
+                                <div class="p-4 flex flex-col items-center justify-center border-2 border-zinc-200 dark:border-zinc-700/50 rounded-2xl bg-white dark:bg-zinc-800 transition-all peer-checked:border-[#FF2D20] peer-checked:bg-red-50/50 dark:peer-checked:bg-red-500/5 group-hover:bg-zinc-50 dark:group-hover:bg-zinc-700/50">
+                                    <svg class="w-6 h-6 mb-2 text-zinc-400 group-hover:text-zinc-600 dark:text-zinc-500 dark:group-hover:text-zinc-300 peer-checked:text-[#FF2D20] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                    <span class="text-[10px] font-bold uppercase text-zinc-600 dark:text-zinc-300 peer-checked:text-[#FF2D20]">Hardware</span>
+                                </div>
+                            </label>
+
+                            <label class="relative group cursor-pointer">
+                                <input type="radio" name="category" value="software" class="peer sr-only">
+                                <div class="p-4 flex flex-col items-center justify-center border-2 border-zinc-200 dark:border-zinc-700/50 rounded-2xl bg-white dark:bg-zinc-800 transition-all peer-checked:border-[#FF2D20] peer-checked:bg-red-50/50 dark:peer-checked:bg-red-500/5 group-hover:bg-zinc-50 dark:group-hover:bg-zinc-700/50">
+                                    <svg class="w-6 h-6 mb-2 text-zinc-400 group-hover:text-zinc-600 dark:text-zinc-500 dark:group-hover:text-zinc-300 peer-checked:text-[#FF2D20] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                                    <span class="text-[10px] font-bold uppercase text-zinc-600 dark:text-zinc-300 peer-checked:text-[#FF2D20]">Software</span>
+                                </div>
+                            </label>
+
+                            <label class="relative group cursor-pointer">
+                                <input type="radio" name="category" value="redes" class="peer sr-only">
+                                <div class="p-4 flex flex-col items-center justify-center border-2 border-zinc-200 dark:border-zinc-700/50 rounded-2xl bg-white dark:bg-zinc-800 transition-all peer-checked:border-[#FF2D20] peer-checked:bg-red-50/50 dark:peer-checked:bg-red-500/5 group-hover:bg-zinc-50 dark:group-hover:bg-zinc-700/50">
+                                    <svg class="w-6 h-6 mb-2 text-zinc-400 group-hover:text-zinc-600 dark:text-zinc-500 dark:group-hover:text-zinc-300 peer-checked:text-[#FF2D20] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071a9.5 9.5 0 0114.142 0M6.27 6.27a14.5 14.5 0 0111.46 0"></path></svg>
+                                    <span class="text-[10px] font-bold uppercase text-zinc-600 dark:text-zinc-300 peer-checked:text-[#FF2D20]">Redes</span>
+                                </div>
+                            </label>
+
+                            <label class="relative group cursor-pointer">
+                                <input type="radio" name="category" value="acessos" class="peer sr-only">
+                                <div class="p-4 flex flex-col items-center justify-center border-2 border-zinc-200 dark:border-zinc-700/50 rounded-2xl bg-white dark:bg-zinc-800 transition-all peer-checked:border-[#FF2D20] peer-checked:bg-red-50/50 dark:peer-checked:bg-red-500/5 group-hover:bg-zinc-50 dark:group-hover:bg-zinc-700/50">
+                                    <svg class="w-6 h-6 mb-2 text-zinc-400 group-hover:text-zinc-600 dark:text-zinc-500 dark:group-hover:text-zinc-300 peer-checked:text-[#FF2D20] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17.001l-2 1v2H7v2H5a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
+                                    <span class="text-[10px] font-bold uppercase text-zinc-600 dark:text-zinc-300 peer-checked:text-[#FF2D20]">Acessos</span>
+                                </div>
+                            </label>
+
+                            <label class="relative group cursor-pointer">
+                                <input type="radio" name="category" value="perifericos" class="peer sr-only">
+                                <div class="p-4 flex flex-col items-center justify-center border-2 border-zinc-200 dark:border-zinc-700/50 rounded-2xl bg-white dark:bg-zinc-800 transition-all peer-checked:border-[#FF2D20] peer-checked:bg-red-50/50 dark:peer-checked:bg-red-500/5 group-hover:bg-zinc-50 dark:group-hover:bg-zinc-700/50">
+                                    <svg class="w-6 h-6 mb-2 text-zinc-400 group-hover:text-zinc-600 dark:text-zinc-500 dark:group-hover:text-zinc-300 peer-checked:text-[#FF2D20] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m12 4a2 2 0 100-4m0 4a2 2 0 110-4m-6 0a2 2 0 100-4m0 4a2 2 0 110-4m-6 0V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m12 0V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4"></path></svg>
+                                    <span class="text-[10px] font-bold uppercase text-zinc-600 dark:text-zinc-300 peer-checked:text-[#FF2D20]">Outros</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <label class="block text-sm font-bold text-zinc-400 uppercase tracking-widest">02. Detalhes do Problema</label>
+
+                        <div class="relative">
+                            <label for="title" class="sr-only">Resumo do problema</label>
+                            <input
+                                type="text"
+                                id="title"
+                                name="title"
+                                required
+                                class="w-full bg-zinc-50 dark:bg-zinc-900/40 border-2 border-zinc-200 dark:border-zinc-700/50 rounded-2xl px-5 py-4 text-lg text-zinc-800 dark:text-zinc-200 outline-none focus:border-[#FF2D20] focus:ring-4 focus:ring-[#FF2D20]/10 transition-all font-medium placeholder-zinc-400 dark:placeholder-zinc-500"
+                                placeholder="Resumo do problema (Ex: Monitor piscando)"
+                            >
                         </div>
 
-                        <form action="{{route('callings.store')}}" method="POST" class="space-y-6">
-
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div class="md:col-span-1">
-                                    <label for="categoria" class="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
-                                        Categoria <span class="text-[#FF2D20]">*</span>
-                                    </label>
-                                    <select
-                                        id="categoria"
-                                        name="category"
-                                        required
-                                        class="block w-full rounded-lg border-zinc-300 dark:border-zinc-600 bg-zinc-50 dark:bg-zinc-900/50 text-zinc-900 dark:text-zinc-100 shadow-sm px-4 py-3 focus:border-[#FF2D20] focus:ring-[#FF2D20] focus:ring-1 sm:text-sm outline-none transition-all duration-200 hover:bg-zinc-100 dark:hover:bg-zinc-900"
-                                    >
-                                        <option value="" disabled selected>Selecione a área...</option>
-                                        <option value="hardware">Hardware (PCs, Monitores)</option>
-                                        <option value="software">Software e Sistemas</option>
-                                        <option value="redes">Redes e Conectividade</option>
-                                        <option value="acessos">Acessos e Permissões</option>
-                                        <option value="perifericos">Periféricos (Impressoras)</option>
-                                    </select>
-                                </div>
-
-                                <div class="md:col-span-1">
-                                    <label for="titulo" class="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
-                                        Título Breve <span class="text-[#FF2D20]">*</span>
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="titulo"
-                                        name="title"
-                                        placeholder="Ex: Erro no sistema de vendas"
-                                        required
-                                        class="block w-full rounded-lg border-zinc-300 dark:border-zinc-600 bg-zinc-50 dark:bg-zinc-900/50 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 shadow-sm px-4 py-3 focus:border-[#FF2D20] focus:ring-[#FF2D20] focus:ring-1 sm:text-sm outline-none transition-all duration-200 hover:bg-zinc-100 dark:hover:bg-zinc-900"
-                                    >
-                                </div>
+                        <div class="group relative">
+                            <label for="description" class="sr-only">Descrição detalhada</label>
+                            <textarea
+                                id="description"
+                                name="description"
+                                rows="4"
+                                required
+                                class="w-full bg-zinc-50 dark:bg-zinc-900/40 border-2 border-zinc-200 dark:border-zinc-700/50 rounded-2xl p-5 text-zinc-800 dark:text-zinc-200 outline-none focus:border-[#FF2D20] focus:ring-4 focus:ring-[#FF2D20]/10 transition-all resize-none placeholder-zinc-400 dark:placeholder-zinc-500"
+                                placeholder="Descreva aqui os detalhes, mensagens de erro ou o que já foi tentado..."
+                            ></textarea>
+                            <div class="absolute bottom-4 right-4 text-[10px] uppercase font-bold text-zinc-400 tracking-tighter">
+                                Mínimo 20 caracteres
                             </div>
+                        </div>
+                    </div>
 
+                    <div class="flex items-center gap-4 pt-4">
+                        <button type="submit" class="flex-1 lg:flex-none px-10 py-4 bg-[#FF2D20] text-white font-bold rounded-2xl shadow-lg shadow-red-500/20 hover:bg-red-700 hover:-translate-y-1 transition-all active:scale-95">
+                            Enviar Solicitação
+                        </button>
+                        <a href="{{ route('callings.show') }}" class="px-6 py-4 text-zinc-500 font-bold hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors">
+                            Voltar
+                        </a>
+                    </div>
+                </form>
+            </div>
+
+            <div class="lg:col-span-4 flex flex-col gap-6">
+                <div class="bg-white dark:bg-zinc-900 text-zinc-800 dark:text-white p-8 rounded-[2rem] shadow-xl border border-zinc-100 dark:border-zinc-800 relative overflow-hidden transition-colors duration-200">
+
+                    <div class="absolute -right-10 -top-10 w-40 h-40 bg-[#FF2D20] rounded-full blur-3xl opacity-10 dark:opacity-20"></div>
+
+                    <h3 class="text-xl font-bold mb-6 relative z-10">Como funciona?</h3>
+
+                    <div class="space-y-8 relative z-10">
+                        <div class="flex gap-4">
+                            <div class="flex flex-col items-center">
+                                <div class="w-8 h-8 rounded-full bg-[#FF2D20] flex items-center justify-center text-xs font-black text-white shadow-md shadow-red-500/30">1</div>
+                                <div class="w-0.5 h-10 bg-zinc-200 dark:bg-zinc-700 my-1"></div>
+                            </div>
                             <div>
-                                <label for="descricao" class="flex justify-between text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
-                                    <span>Descrição Detalhada <span class="text-[#FF2D20]">*</span></span>
-                                    <span class="text-zinc-400 font-normal text-xs">Seja o mais específico possível</span>
-                                </label>
-                                <textarea
-                                    id="descricao"
-                                    name="description"
-                                    rows="6"
-                                    placeholder="1. O que você estava tentando fazer?&#10;2. O que aconteceu (qual erro apareceu)?&#10;3. O que você já tentou para resolver?"
-                                    required
-                                    class="block w-full rounded-lg border-zinc-300 dark:border-zinc-600 bg-zinc-50 dark:bg-zinc-900/50 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400/70 dark:placeholder-zinc-500/70 shadow-sm px-4 py-3 focus:border-[#FF2D20] focus:ring-[#FF2D20] focus:ring-1 sm:text-sm resize-y outline-none transition-all duration-200 hover:bg-zinc-100 dark:hover:bg-zinc-900 leading-relaxed"
-                                ></textarea>
+                                <h4 class="font-bold text-sm text-zinc-900 dark:text-zinc-100">Registro</h4>
+                                <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed mt-0.5">Seu chamado é protocolado em nossa fila de triagem imediata.</p>
                             </div>
+                        </div>
 
-                            <div class="flex items-center justify-end space-x-4 pt-6 mt-6 border-t border-zinc-100 dark:border-zinc-700/50">
-                                <button
-                                    type="button"
-                                    class="px-5 py-2.5 text-sm font-medium text-zinc-600 dark:text-zinc-300 bg-transparent hover:text-zinc-900 dark:hover:text-white transition-colors duration-200"
-                                >
-                                    Cancelar
-                                </button>
-                                <button
-                                    type="submit"
-                                    class="flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white bg-[#FF2D20] rounded-lg shadow-sm hover:bg-red-700 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-zinc-800 focus:ring-[#FF2D20] transition-all duration-200 transform hover:-translate-y-0.5"
-                                >
-                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-                                    </svg>
-                                    Enviar Solicitação
-                                </button>
+                        <div class="flex gap-4">
+                            <div class="flex flex-col items-center">
+                                <div class="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 border-2 border-zinc-200 dark:border-zinc-700 flex items-center justify-center text-xs font-black text-zinc-700 dark:text-white transition-colors">2</div>
+                                <div class="w-0.5 h-10 bg-zinc-200 dark:bg-zinc-700 my-1 transition-colors"></div>
                             </div>
-                        </form>
+                            <div>
+                                <h4 class="font-bold text-sm text-zinc-900 dark:text-zinc-100">Diagnóstico</h4>
+                                <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed mt-0.5">Um técnico especializado assume o caso para análise técnica.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="flex flex-col items-center">
+                                <div class="w-8 h-8 rounded-full bg-zinc-50 dark:bg-zinc-800/50 border-2 border-zinc-200 dark:border-zinc-700/50 flex items-center justify-center text-xs font-black text-zinc-400 dark:text-zinc-500 transition-colors">3</div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-zinc-400 dark:text-zinc-500">Resolução</h4>
+                                <p class="text-xs text-zinc-400 dark:text-zinc-600 leading-relaxed mt-0.5">O problema é resolvido e você recebe uma notificação.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="lg:col-span-4 space-y-6">
-
-                <div class="bg-zinc-50 dark:bg-zinc-800/50 rounded-xl p-6 border border-zinc-200 dark:border-zinc-700/60">
-                    <h3 class="text-sm font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider mb-4 flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        Boas Práticas
-                    </h3>
-                    <ul class="space-y-4 text-sm text-zinc-600 dark:text-zinc-400">
-                        <li class="flex items-start">
-                            <span class="text-[#FF2D20] mr-2 font-bold">•</span>
-                            <span>Sempre inclua mensagens de erro exatas, se houver.</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-[#FF2D20] mr-2 font-bold">•</span>
-                            <span>Selecione a categoria correta para acelerar o direcionamento do seu problema.</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-[#FF2D20] mr-2 font-bold">•</span>
-                            <span>Evite abrir múltiplos chamados para o mesmo assunto.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 rounded-xl p-6 border border-zinc-200 dark:border-zinc-700/60">
-                    <h3 class="text-sm font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider mb-2">
-                        Urgências Críticas
-                    </h3>
-                    <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
-                        Se o sistema inteiro estiver fora do ar ou o impacto for em toda a empresa, não abra um chamado normal.
+                <div class="p-6 border-2 border-dashed border-zinc-200 dark:border-zinc-800 rounded-[2rem] bg-zinc-50/50 dark:bg-transparent transition-colors duration-200">
+                    <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed italic text-center">
+                        "O tempo médio de resposta para chamados de Hardware é de 4 horas úteis."
                     </p>
-                    <div class="text-sm font-medium text-zinc-900 dark:text-zinc-100 flex items-center">
-                        <svg class="w-4 h-4 mr-2 text-[#FF2D20]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                        </svg>
-                        Ramal TI: 4004
-                    </div>
                 </div>
-
             </div>
+
         </div>
     </div>
 </x-app-layout>
-

@@ -75,33 +75,35 @@
             @endcan
 
             @can('manager_client')
-                <li>
+                    <li>
+                        <a href="{{route('callings.show')}}"
+                           class="flex items-center px-3 py-2.5 text-sm font-semibold rounded-xl transition-all group {{ request()->routeIs('callings.show') ? 'bg-red-50 text-[#FF2D20] dark:bg-[#FF2D20]/10 dark:text-[#FF2D20]' : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-white' }}">
+                            <svg
+                                class="shrink-0 w-5 h-5 text-zinc-400 group-hover:text-zinc-900 dark:text-zinc-500 dark:group-hover:text-white transition-colors"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
+                            <span class="flex-1 ms-3 whitespace-nowrap">Solicitar</span>
+                        </a>
+                    </li>
+
+
+                    <li>
                     <a href="{{route('callings.create')}}"
-                       class="flex items-center px-3 py-2.5 text-sm font-semibold rounded-xl transition-all group {{ request()->routeIs('callings.index') ? 'bg-red-50 text-[#FF2D20] dark:bg-[#FF2D20]/10 dark:text-[#FF2D20]' : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-white' }}">
+                       class="flex items-center px-3 py-2.5 text-sm font-semibold rounded-xl transition-all group {{ request()->routeIs('callings.create') ? 'bg-red-50 text-[#FF2D20] dark:bg-[#FF2D20]/10 dark:text-[#FF2D20]' : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-white' }}">
                         <svg
-                            class="shrink-0 w-5 h-5 transition-transform duration-300 group-hover:scale-110 {{ request()->routeIs('callings.index') ? 'text-[#FF2D20]' : 'text-zinc-400 group-hover:text-zinc-900 dark:text-zinc-500 dark:group-hover:text-white' }}"
+                            class="shrink-0 w-5 h-5 transition-transform duration-300 group-hover:scale-110 {{ request()->routeIs('callings.create') ? 'text-[#FF2D20]' : 'text-zinc-400 group-hover:text-zinc-900 dark:text-zinc-500 dark:group-hover:text-white' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                   stroke-width="2.2"
                                   d="M3 10.8 12 3l9 7.8V20a1 1 0 0 1-1 1h-5v-6a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v6H4a1 1 0 0 1-1-1v-9.2Z"/>
                         </svg>
-                        <span class="ms-3 font-bold">Chamados</span>
+                        <span class="ms-3 font-bold">Solicitar</span>
                     </a>
                 </li>
 
-                <li>
-                    <a href="{{route('callings.show')}}"
-                       class="flex items-center px-3 py-2.5 text-sm text-zinc-600 rounded-lg hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-white transition-colors group">
-                        <svg
-                            class="shrink-0 w-5 h-5 text-zinc-400 group-hover:text-zinc-900 dark:text-zinc-500 dark:group-hover:text-white transition-colors"
-                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                            viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                        </svg>
-                        <span class="flex-1 ms-3 whitespace-nowrap">Solicitar</span>
-                    </a>
-                </li>
             @endcan
         </ul>
     </div>

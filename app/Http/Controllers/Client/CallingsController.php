@@ -16,7 +16,7 @@ class CallingsController extends Controller
     #[NoReturn]
     public function show()
     {
-        $callings = Calling::query()->get();
+        $callings = Calling::query()->where('client_id', auth()->user()->id)->get();
         return view('client.list_calling', [
             'callings' => $callings,
         ]);

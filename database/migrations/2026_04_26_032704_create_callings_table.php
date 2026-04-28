@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('callings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('client_id')->references('id')->on('users')->onDelete('cascade');
-//            $table->foreignId('technical_id')->references('id')->on('users')->onDelete('cascade');
+//            $table->foreignId('technical_id')->nullable()->references('id')->on('users')->onDelete('cascade');
             $table->string('title', 50)->nullable();
             $table->string('description', 255)->nullable();
             $table->string('category', 50)->nullable();
