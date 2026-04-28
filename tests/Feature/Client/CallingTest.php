@@ -6,24 +6,44 @@
 //    $response->assertStatus(200);
 //});
 
-test('client can create a calling', function () {
-    \Spatie\Permission\Models\Role::create(['name' => 'client']);
+use App\Models\Calling;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
 
-    $user = \App\Models\User::factory()->create();
+test('client can create a calling', function () {
+    Role::create(['name' => 'client']);
+
+    $user = User::factory()->create();
     $user->assignRole('client');
 
-    $response = $this->actingAs($user)->post(route('callings.store'), [
-        'client_id' => $user->id,
-        'title' => 'Internet',
-        'description' => 'Problema na minha net',
-        'category' => 'rede',
-    ]);
+    $calling = Calling::factory()->create();
+
+    $callings = $calling->toArray();
+
+    $response = $this->actingAs($user)
+        ->post(route('callings.store'), $callings);
+
 
     $response->assertRedirect(route('callings.create'));
 
     $this->assertDatabaseHas('callings', [
-        'client_id' => $user->id,
-        'title' => 'Internet',
+        'client_id' => $callings['id']
     ]);
+
     $response->assertRedirect(route('callings.create'));
+});
+
+test('client can list his callings', function () {
+    Role::create(['name' => 'client']);
+    $user = User::factory()->create();
+    $user->assignRole('client');
+
+    $calling = Calling::factory()->create([
+        'client_id' => $user->id,
+    ]);
+
+    $this->actingAs($user)->
+    get(route('callings.show'))
+        ->assertSee($calling->title)
+        ->assertStatus(200);
 });

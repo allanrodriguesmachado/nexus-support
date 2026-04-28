@@ -18,8 +18,19 @@ class DatabaseSeeder extends Seeder
         $user = User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+            'password' => bcrypt('password'),
         ]);
 
         $user->assignRole('admin');
+
+        $client = User::factory()->create([
+            'name' => 'Cliente Teste',
+            'email' => 'cliente@cliente.com',
+            'password' => bcrypt('password'),
+        ]);
+
+        $client->assignRole('client');
+
+        $this->call(CallingSeeder::class);
     }
 }
