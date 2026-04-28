@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
+
         $this->call(RolesAndPermissionsSeeder::class);
 
         $user = User::factory()->create([
@@ -20,6 +21,5 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $user->assignRole('admin');
-        $this->call(TechnicalSeeder::class);
     }
 }

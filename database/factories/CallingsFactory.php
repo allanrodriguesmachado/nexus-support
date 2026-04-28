@@ -2,12 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Callings;
+use App\Models\Calling;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Callings>
+ * @extends Factory<Calling>
  */
 class CallingsFactory extends Factory
 {
@@ -18,8 +18,6 @@ class CallingsFactory extends Factory
      */
     public function definition(): array
     {
-        $user = User::role('client')->first();
-
         return [
             'title' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),

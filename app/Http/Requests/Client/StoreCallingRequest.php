@@ -26,7 +26,6 @@ class StoreCallingRequest extends FormRequest
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
             'category' => ['required', 'string', 'max:255'],
-            'client_id' => ['required'],
         ];
     }
 }

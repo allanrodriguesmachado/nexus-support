@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/callings', [CallingsController::class, 'create'])->name('callings.create');
     Route::post('/callings/store', [CallingsController::class, 'store'])->name('callings.store');
+    Route::get('/callings/list', [CallingsController::class, 'show'])->name('callings.show');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
