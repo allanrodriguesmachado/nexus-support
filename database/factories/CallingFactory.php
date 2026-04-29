@@ -14,6 +14,7 @@ use Spatie\Permission\Models\Role;
 class CallingFactory extends Factory
 {
     protected $model = Calling::class;
+
     /**
      * Define the model's default state.
      *
@@ -34,10 +35,7 @@ class CallingFactory extends Factory
         return $this->afterCreating(function (Calling $calling) {
             $role = Role::firstOrCreate(['name' => 'client']);
 
-            // 1. Buscamos o usuário usando o ID que está na coluna da tabela
-            // 2. Verificamos se ele existe para evitar o erro de "null"
             $user = User::find($calling->client_id);
-
             if ($user) {
                 $user->assignRole($role);
             }
