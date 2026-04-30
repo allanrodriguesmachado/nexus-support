@@ -31,9 +31,13 @@ test('it should  required email', function () {
 });
 
 test('it should required password', function () {
-   $user = User::factory()->create();
+   $user = User::factory()->raw([
+       'password' => '',
+   ]);
 
-   $response = $this->post(route('auth'), []);
+   $response = $this->post(route('auth'), [
+       'password' => $user['password']
+   ]);
 
    $response->assertSessionHasErrors('password');
    $this->assertGuest();
