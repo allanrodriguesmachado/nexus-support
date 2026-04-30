@@ -13,20 +13,20 @@ test('renders the register screen ', function () {
 });
 
 test('new clients to be registered', function () {
-    Role::create(['name' => 'client']);
+    \Spatie\Permission\Models\Role::create(['name' => 'client']);
 
-    $response = post(route('register.store'), [
-        'name' => 'Allan Rodrigues',
-        'email' => 'john@client.com.br',
+    $user = User::factory()->raw([
         'password' => 'password',
         'password_confirmation' => 'password'
     ]);
 
+    $response = post(route('register.store'), $user);
+
     assertDatabaseHas('users', [
-        'email' => 'john@client.com.br'
+        'email' => $user['email']
     ]);
 
-    $user = User::where('email', 'john@client.com.br')->first();
+    $user = User::where('email', $user['email'])->first();
 
     assertAuthenticatedAs($user);
 
