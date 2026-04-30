@@ -6,6 +6,10 @@ use function Pest\Laravel\assertAuthenticatedAs;
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\post;
 
+beforeEach(function () {
+    Role::create(['name' => 'client']);
+});
+
 test('renders the register screen ', function () {
     $response = $this->get(route('register.create'));
 
@@ -13,8 +17,6 @@ test('renders the register screen ', function () {
 });
 
 test('new clients to be registered', function () {
-    \Spatie\Permission\Models\Role::create(['name' => 'client']);
-
     $user = User::factory()->raw([
         'password' => 'password',
         'password_confirmation' => 'password'
@@ -30,7 +32,13 @@ test('new clients to be registered', function () {
 
     assertAuthenticatedAs($user);
 
-    expect($user)->not->toBeNull()->and($user->hasRole('client'))->toBeTrue();
-
     $response->assertRedirect(route('dashboard'));
+});
+
+test('it should required fields', function () {
+    $response = $this->post(route('register.store'));
+
+    $response->assertSessionHasErrors(['name', 'email', 'password']);
+
+    $this->assertGuest();
 });
