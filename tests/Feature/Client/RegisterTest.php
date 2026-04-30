@@ -42,3 +42,13 @@ test('it should required fields', function () {
 
     $this->assertGuest();
 });
+
+test('it should require unique email', function () {
+    $user = User::factory()->create();
+    $user2 = User::factory()->raw(['email' => $user['email']]);
+
+    $response = $this->post(route('register.store'), $user2);
+
+    $response->assertSessionHasErrors('email');
+    $this->assertGuest();
+});
