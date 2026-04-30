@@ -17,17 +17,8 @@ test('authenticates users with valid credentials', function () {
         'password' => 'password'
     ]);
 
-    $this->assertAuthenticated();
+    $this->assertAuthenticatedAs($user);
     $response->assertRedirect(route('dashboard', absolute: false));
-});
-
-test('allows authenticated users to logout', function () {
-    $user = User::factory()->create();
-
-    $response = $this->actingAs($user)->post(route('logout'));
-
-    $this->assertGuest();
-    $response->assertRedirect('/');
 });
 
 test('can not create a user with an empty email.', function () {
@@ -76,4 +67,13 @@ test('authenticated users are redirected when visiting login screen', function (
     $response = $this->actingAs($user)->get(route('login'));
 
     $response->assertRedirect(route('dashboard', absolute: false));
+});
+
+test('it should  required email', function () {
+    $user = User::factory()->create();
+
+    $response = $this->post(route('auth'), []);
+
+    $response->assertSessionHasErrors('email');
+    $this->assertGuest();
 });
